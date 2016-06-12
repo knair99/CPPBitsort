@@ -6,9 +6,8 @@
 #include <climits>
 #include <bitset>
 
-using std::cout;        using std::cin;
-using std::endl;        using std::vector;      using std::size_t;
-using std::bitset;
+using std::cout;        using std::cin;     using std::endl;        
+using std::vector;      using std::size_t;  using std::bitset;
 
 //Generate phone numbers
 void generate_array(vector<long>& v){
@@ -17,6 +16,7 @@ void generate_array(vector<long>& v){
     }
     return;
 }
+
 //Shuffle up the phone numbers
 void shuffle_array(vector<long>& v){
     srand(time(NULL));
@@ -30,31 +30,28 @@ void shuffle_array(vector<long>& v){
     }
     return;
 }
+
 //Helper to print out numbers
 void display_array(vector<long>& v){
     vector<long>::iterator i = v.begin();
     for(; i != v.end(); ++i){
         cout << *i << endl;
     }
-
 }
+
 //Sort the array using a bitvector
 void sort_array(vector<long>& v){
-
     bitset<9999999UL>& bitvector = *(new bitset<9999999UL>());
     for(vector<long>::iterator i = v.begin(); i != v.end(); ++i){
         bitvector.set((*i- 5120000000), true);
     }
 
     v.clear();
-
     for(long i = 0; i < bitvector.size(); i++){
         if(bitvector.test(i)){
             v.push_back(5120000000 + i);
         }
-    
     }
-
 }
 
 int main(int argc, char *argv[]){
@@ -66,5 +63,3 @@ int main(int argc, char *argv[]){
     //display_array(v);
     return 0;    
 }
-
-
